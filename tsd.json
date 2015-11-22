@@ -6,16 +6,16 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "express/express.d.ts": {
-      "commit": "16134c168d021351acb1673ee9659644fc58c424"
+      "commit": "fa04c80f4a889613b96cb4f283848c61a9f64233"
     },
     "node/node.d.ts": {
-      "commit": "16134c168d021351acb1673ee9659644fc58c424"
+      "commit": "fa04c80f4a889613b96cb4f283848c61a9f64233"
     },
     "serve-static/serve-static.d.ts": {
-      "commit": "16134c168d021351acb1673ee9659644fc58c424"
+      "commit": "fa04c80f4a889613b96cb4f283848c61a9f64233"
     },
     "mime/mime.d.ts": {
-      "commit": "16134c168d021351acb1673ee9659644fc58c424"
+      "commit": "fa04c80f4a889613b96cb4f283848c61a9f64233"
     },
     "method-override/method-override.d.ts": {
       "commit": "16134c168d021351acb1673ee9659644fc58c424"
@@ -25,6 +25,24 @@
     },
     "errorhandler/errorhandler.d.ts": {
       "commit": "16134c168d021351acb1673ee9659644fc58c424"
+    },
+    "sequelize/sequelize.d.ts": {
+      "commit": "0ea013a775ce1fb90c5e41b255e1d038714ffbe5"
+    },
+    "lodash/lodash.d.ts": {
+      "commit": "0ea013a775ce1fb90c5e41b255e1d038714ffbe5"
+    },
+    "bluebird/bluebird.d.ts": {
+      "commit": "0ea013a775ce1fb90c5e41b255e1d038714ffbe5"
+    },
+    "validator/validator.d.ts": {
+      "commit": "0ea013a775ce1fb90c5e41b255e1d038714ffbe5"
+    },
+    "morgan/morgan.d.ts": {
+      "commit": "fa04c80f4a889613b96cb4f283848c61a9f64233"
+    },
+    "cookie-parser/cookie-parser.d.ts": {
+      "commit": "fa04c80f4a889613b96cb4f283848c61a9f64233"
     }
   }
 }

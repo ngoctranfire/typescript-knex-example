@@ -1,24 +1,65 @@
 import * as http from "http";
 import * as url from "url";
+import * as path from "path";
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as methodOverride from "method-override";
 import * as errorHandler from "errorhandler";
+import * as hbsTemp from "./template_engines/HandleBarsViewEngine";
+import * as logger from "morgan";
+import * as cookieParser from "cookie-parser";
 
 const app: express.Express = express();
-//Configurations
 
-
-app.get('/', function(req, res): void {
-   res.send('Hello World!');
+//Declare new engine and pass in appropriate object
+//In this case, the object was actually a json object that is handled by the engine
+var expressHbs: hbsTemp.HBSTemplate = new hbsTemp.HBSTemplate(app, 'hbs', 'views');
+expressHbs.configureEngine({
+    defaultLayout: path.join(__dirname, 'views/layouts/default.hbs'),
+    partialsDir: path.join(__dirname, 'views/partials'),
+    layoutsDir: path.join(__dirname, 'views/layouts')
 });
 
-let server: http.Server = app.listen(3000, function (): void {
-    var host: string = this.address().address;
-    var port: number = this.address().port;
-    console.log('Example app listening at http://%s:%s', host, port);
+//Router Configurations
+import * as routes from "./routes/index";
+app.use('/', routes);
+
+//Middleware Configurations
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+//catch 404 and forward to error handler
+app.use((req: express.Request, res: express.Response, next: any) => {
+   var err = new Error('Not Found');
+   err['status'] = 404;
+   next(err);
 });
 
-app.get('/hey', function(req: express.Request, res: express.Response): void {
-    res.send('What the heck');
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+   app.use((err: any, req: express.Request, res: express.Response, next: any) => {
+       res.status(err['status'] || 500);
+       res.render('error', {
+           message: err.message,
+           error: err
+       });
+   });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use((err: any, req: express.Request, res: express.Response, next: any) => {
+   res.status(err.status || 500);
+   res.render('error', {
+       message: err.message,
+       error: {}
+   });
 });
+
+module.exports = app;
