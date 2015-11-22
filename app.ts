@@ -62,4 +62,4 @@ app.use((err: any, req: express.Request, res: express.Response, next: any) => {
    });
 });
 
-module.exports = app;
+exports = app;
