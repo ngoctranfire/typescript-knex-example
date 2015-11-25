@@ -5,16 +5,16 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as methodOverride from "method-override";
 import * as errorHandler from "errorhandler";
-import * as hbsTemp from "./template_engines/HandleBarsViewEngine";
+import {HBSTemplate} from "./template_engines/HandleBarsViewEngine";
 import * as logger from "morgan";
 import * as cookieParser from "cookie-parser";
-
+import {connect} from "./models/db";
 const app: express.Express = express();
 
 //Declare new engine and pass in appropriate object
 //In this case, the object was actually a json object that is handled by the engine
-var expressHbs: hbsTemp.HBSTemplate = new hbsTemp.HBSTemplate(app, 'hbs', 'views');
-expressHbs.configureEngine({
+var hbs: HBSTemplate = new HBSTemplate(app, 'hbs', 'views');
+hbs.configureEngine({
     defaultLayout: path.join(__dirname, 'views/layouts/default.hbs'),
     partialsDir: path.join(__dirname, 'views/partials'),
     layoutsDir: path.join(__dirname, 'views/layouts')
@@ -31,6 +31,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+connect();
 //catch 404 and forward to error handler
 app.use((req: express.Request, res: express.Response, next: any) => {
    var err = new Error('Not Found');
@@ -62,4 +63,4 @@ app.use((err: any, req: express.Request, res: express.Response, next: any) => {
    });
 });
 
-exports = app;
+module.exports = app;

@@ -43,6 +43,9 @@
     },
     "cookie-parser/cookie-parser.d.ts": {
       "commit": "fa04c80f4a889613b96cb4f283848c61a9f64233"
+    },
+    "pg/pg.d.ts": {
+      "commit": "fa04c80f4a889613b96cb4f283848c61a9f64233"
     }
   }
 }
