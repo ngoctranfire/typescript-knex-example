@@ -8,7 +8,7 @@ import * as errorHandler from "errorhandler";
 import {HBSTemplate} from "./template_engines/HandleBarsViewEngine";
 import * as logger from "morgan";
 import * as cookieParser from "cookie-parser";
-import {connect} from "./models/db";
+import {Database} from "./models/db";
 const app: express.Express = express();
 
 //Declare new engine and pass in appropriate object
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-connect();
+Database.connect();
 //catch 404 and forward to error handler
 app.use((req: express.Request, res: express.Response, next: any) => {
    var err = new Error('Not Found');

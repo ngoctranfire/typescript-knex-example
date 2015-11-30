@@ -9,7 +9,7 @@
       "commit": "fa04c80f4a889613b96cb4f283848c61a9f64233"
     },
     "node/node.d.ts": {
-      "commit": "fa04c80f4a889613b96cb4f283848c61a9f64233"
+      "commit": "fb2b3b1e068c9ff7d8f9b0851c08d37d96c95c38"
     },
     "serve-static/serve-static.d.ts": {
       "commit": "fa04c80f4a889613b96cb4f283848c61a9f64233"
@@ -33,7 +33,7 @@
       "commit": "0ea013a775ce1fb90c5e41b255e1d038714ffbe5"
     },
     "bluebird/bluebird.d.ts": {
-      "commit": "0ea013a775ce1fb90c5e41b255e1d038714ffbe5"
+      "commit": "fb2b3b1e068c9ff7d8f9b0851c08d37d96c95c38"
     },
     "validator/validator.d.ts": {
       "commit": "0ea013a775ce1fb90c5e41b255e1d038714ffbe5"
@@ -46,6 +46,9 @@
     },
     "pg/pg.d.ts": {
       "commit": "fa04c80f4a889613b96cb4f283848c61a9f64233"
+    },
+    "knex/knex.d.ts": {
+      "commit": "fb2b3b1e068c9ff7d8f9b0851c08d37d96c95c38"
     }
   }
 }
