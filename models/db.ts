@@ -2,6 +2,7 @@
 
 import * as Promise from "bluebird";
 import * as pg from "pg";
+import * as client from "knex";
 
 // export function connect() {
 //   var conString = "postgres://ntran:dont@localhost/play_blog_sample";
@@ -24,18 +25,19 @@ import * as pg from "pg";
 //     });
 // }
 export module Database {
-  export function connect() {
-    var dbURL: string = "postgres://ntran:dont@localhost/play_blog_sample";
-    pg.connect(dbURL, function(err, client, done) {
-      if (err) {
-        console.log("Err = ")
-      }
-        client.query('SELECT * FROM \"CAT\"', function(err, result) {
-            if (err) {
-              console.log("The error =" +err);
-            }
-            console.log("This is the result" + result.rows[0].NAME);
-        });
-    });
-  }
+  export var knex: client = client({
+    client: 'pg',
+    connection:  {
+      host: '127.0.0.1',
+      user: 'my_user',
+      password: 'new_password',
+      database: 'play_blog_sample'
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    debug: true,
+  });
+
 }

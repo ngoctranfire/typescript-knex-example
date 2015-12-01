@@ -1,20 +1,19 @@
-var pg = require("pg");
+var client = require("knex");
 var Database;
 (function (Database) {
-    function connect() {
-        var dbURL = "postgres://ntran:dont@localhost/play_blog_sample";
-        pg.connect(dbURL, function (err, client, done) {
-            if (err) {
-                console.log("Err = ");
-            }
-            client.query('SELECT * FROM \"CAT\"', function (err, result) {
-                if (err) {
-                    console.log("The error =" + err);
-                }
-                console.log("This is the result" + result.rows[0].NAME);
-            });
-        });
-    }
-    Database.connect = connect;
+    Database.knex = client({
+        client: 'pg',
+        connection: {
+            host: '127.0.0.1',
+            user: 'my_user',
+            password: 'new_password',
+            database: 'play_blog_sample'
+        },
+        pool: {
+            min: 2,
+            max: 10
+        },
+        debug: true,
+    });
 })(Database = exports.Database || (exports.Database = {}));
 //# sourceMappingURL=db.js.map
